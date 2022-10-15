@@ -1,48 +1,45 @@
-label {	margin: 2em;}
-/*input {	display: none;}*/
+body {
+    background: url("./img/bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+:root {
+    --green: rgba(51, 131, 09, 0.75);
+    --light-green: rgba(201, 212, 108, 0.5);
+    --carrot: rgba(228, 135, 22, 1);
+    --light-carrot: rgba(250, 171, 1, 0.8);
+    --sand: rgba(134, 111, 104, 0.8);
+  }
+
+label {	margin: 10px;}
+input {	display: none;}
 input+label,
-input+label::before,
-input+label::after {
-	-webkit-transition: all .2s;
-	transition: all .2s;
+input+label::before {
+	-webkit-transition: all .5s;
+	transition: all .5s;
 }
 input+label {
 	display: inline-block;
 	position: relative;
 	width: 130px;
 	height: 50px;
-	border-radius: 25px;
+	border-radius: 15px;
 	cursor: pointer;
 }
+
 input+label::before {
 	display: block;
 	content: attr(data-off-label);
 	position: absolute;
-	top: 15px;
-	right: 10px;
-	color: #fff;
+    top:20%;
+    left:50%;
+    transform:translateX(-50%);
 	font-family: Arial, sans-serif;
-	font-size: 18px;
 }
-input+label::after {
-	content: '';
-	position: absolute;
-	top: 2px;
-	left: 2px;
-	width: 44px;
-	height: 44px;
-	background-color: #fff;
-	border-radius: 50%;
-}
+
 input:checked+label::before {
 	content: attr(data-on-label);
-	left: 14px;
-	right: auto;
 	color: #fff;
-}
-input:checked+label::after {
-	left: 83px;
-	background-color: #f7f7f7;
 }
 
 .age+label {	background-color: #ccc; }
@@ -50,9 +47,26 @@ input:checked+label::after {
 .age:checked+label {	background-color: #3498db; }
 .age:checked+label::before { color: #fff; }
 
-.sex+label {	background-color: rgb(6, 207, 22); }
-.sex+label::before {	color: rgb(228, 108, 9); }
-.sex:checked+label {	background-color: #e68e0a; }
-.sex:checked+label::before { color: rgb(17, 235, 10); }
+.sex+label {	background-color: rgba(0,0,0,0.2); }
+.sex+label::before {	color: rgba(0,0, 0,0.6); }
+.sex:checked+label {	background-color:var(--carrot);}
+.sex:checked+label::before { color: white; }
 
-.form {border:2px solid #999;}
+.form {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color:rgba(255,255,255,0.4);
+    backdrop-filter: blur(5px);
+    border-radius:15px;
+}
+
+fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90%;
+    margin: 0 auto;
+    border: 1px solid var(--carrot);
+    color:var(--sand);
+}
