@@ -1,3 +1,23 @@
+class Input{
+    constructor(buttonText){
+        this.buttonText=buttonText;
+    }
+
+    render(){
+        return `<div class="input__wrap">
+                    <input 
+                        type="text" 
+                        placeholder="looking for..." 
+                        class="input"/>
+                    <div class="clear__wrap">
+                        <button 
+                            id="clear">${this.buttonText}
+                        </button>
+                    </div>
+                </div>`
+    }
+}
+
 class Checkbox {
   constructor(id, classCheckbox, name, dataOn, dataOff, checked='') {
     this.id = id;
@@ -52,6 +72,7 @@ class Form {
   }
 }
 
+let input = new Input('&#9746;');
 let female = new Checkbox("demo1", "sex", "check", "female", "female");
 let male = new Checkbox("demo2", "sex", "check", "male", "male");
 let all = new Checkbox("demo3", "sex", "check", "all", "all");
@@ -64,12 +85,14 @@ let unsorted = new Checkbox("demo8", "sex", "check1", "unsorted", "unsorted");
 
 const myForm = new Form(".container", "form");
 
+
 myForm.addFieldSet("field1",'Filter by gender');
 myForm.addFieldSet("field2","Sorting");
 
 myForm.addCheckbox(female, '.field1');
 myForm.addCheckbox(male, '.field1');
 myForm.addCheckbox(all, '.field1');
+myForm.addCheckbox(input,'.field1');
 
 myForm.addCheckbox(ageUp, '.field2');
 myForm.addCheckbox(ageDown, '.field2');
