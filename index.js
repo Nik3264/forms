@@ -1,17 +1,13 @@
 class Input{
-    constructor(buttonText){
-        this.buttonText=buttonText;
-    }
-
     render(){
         return `<div class="input__wrap">
                     <input 
                         type="text" 
                         placeholder="looking for..." 
-                        class="input"/>
+                        class="input__text"/>
                     <div class="clear__wrap">
                         <button 
-                            id="clear">${this.buttonText}
+                            id="clear__button">
                         </button>
                     </div>
                 </div>`
@@ -57,13 +53,8 @@ class Form {
     field.appendChild(document.createElement('legend')).innerText=`${legendText}`;
   }
 
-  addLegend(fieldSetClass) {
-    this.form.appendChild(document.createElement("fieldset"))
-    .className = fieldSetClass;
-  }
-
-  addCheckbox(checkbox, parentClassName=this.classForm) {
-    document.querySelector(parentClassName).innerHTML += checkbox.render();
+  addChildObject(childObject, parentClassName=this.classForm) {
+    document.querySelector(parentClassName).innerHTML += childObject.render();
   }
 
   render(classForm) {
@@ -72,7 +63,7 @@ class Form {
   }
 }
 
-let input = new Input('&#9746;');
+let input = new Input();
 let female = new Checkbox("demo1", "sex", "check", "female", "female");
 let male = new Checkbox("demo2", "sex", "check", "male", "male");
 let all = new Checkbox("demo3", "sex", "check", "all", "all");
@@ -89,13 +80,13 @@ const myForm = new Form(".container", "form");
 myForm.addFieldSet("field1",'Filter by gender');
 myForm.addFieldSet("field2","Sorting");
 
-myForm.addCheckbox(female, '.field1');
-myForm.addCheckbox(male, '.field1');
-myForm.addCheckbox(all, '.field1');
-myForm.addCheckbox(input,'.field1');
+myForm.addChildObject(female, '.field1');
+myForm.addChildObject(male, '.field1');
+myForm.addChildObject(all, '.field1');
+myForm.addChildObject(input,'.field1');
 
-myForm.addCheckbox(ageUp, '.field2');
-myForm.addCheckbox(ageDown, '.field2');
-myForm.addCheckbox(nameUp, '.field2');
-myForm.addCheckbox(nameDown, '.field2');
-myForm.addCheckbox(unsorted, '.field2');
+myForm.addChildObject(ageUp, '.field2');
+myForm.addChildObject(ageDown, '.field2');
+myForm.addChildObject(nameUp, '.field2');
+myForm.addChildObject(nameDown, '.field2');
+myForm.addChildObject(unsorted, '.field2');
